@@ -1,4 +1,4 @@
-# personal
+# rapid-personal-sites
 
 This repository represents the full site content.
 
