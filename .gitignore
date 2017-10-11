@@ -1,2 +1,3 @@
 *.pyc
 settings_secret.py
+__pycache__/
