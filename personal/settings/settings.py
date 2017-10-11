@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'webpages',
 
     # Websites
+    'websites.martycorbett_com',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
