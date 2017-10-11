@@ -1,0 +1,15 @@
+<div class="stream-field">
+    {% for child in content %}
+        {% if child.block_type == 'heading' %}
+            <h2>{{ child }}</h2>
+        {% elif child.block_type == 'subheading' %}
+            <h3>{{ child }}</h3>
+        {% elif child.block_type == 'paragraph' %}
+            {{ child.value|safe }}
+        {% elif child.block_type == 'image' %}
+            {{ child }}
+        {% else %}
+            {{ child }}
+        {% endif %}
+    {% endfor %}
+</div>

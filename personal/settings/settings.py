@@ -34,6 +34,7 @@ ALLOWED_HOSTS = HOSTS
 INSTALLED_APPS = [
     'home',
     'search',
+    'webpages',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
