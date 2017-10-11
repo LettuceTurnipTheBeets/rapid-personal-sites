@@ -1,0 +1,24 @@
+# located /var/nginx/sites-available/rapid-personal-sites
+
+server {
+    listen 80;
+    server_name 72.14.182.183;    
+    #server_name _;
+
+    access_log /var/log/nginx/rapid-personal-sites/access.log;
+    error_log /var/log/nginx/rapid-personal-sites/error.log;
+
+    location = /favicon.ico {
+        access_log off;
+        log_not_found off;
+    }
+    
+    location /static/ {
+        root /home/corbe054/rapid-personal-sites/personal;
+    }
+
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:/run/uwsgi/rapid-personal-sites.sock;
+    }
+}
