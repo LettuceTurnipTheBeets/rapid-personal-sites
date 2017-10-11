@@ -32,9 +32,10 @@ ALLOWED_HOSTS = HOSTS
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
-    'search',
+    # Base webpages template
     'webpages',
+
+    # Websites
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
