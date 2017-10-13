@@ -1,4 +1,8 @@
 # located /var/nginx/sites-available/rapid-personal-sites
+server {
+    server_name "~^(?!www\.).*" ;
+    return 301 $scheme://www.$host$request_uri;
+}
 
 server {
     listen 80;
