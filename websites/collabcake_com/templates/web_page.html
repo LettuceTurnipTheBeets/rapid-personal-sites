@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-webpage{% endblock %}
+
+{% block content %}
+<!-- CollabCake.com Template -->
+<article class="content-primary">
+  <div class="background-container">
+    <div class="content-container">
+      <article>
+        <div class="intro">
+            <div class="content">
+                <h2>{{ page.title }}</h2>
+                {% if page.body %}
+                  {% with content=page.body %}
+                    {% include 'webpages/templates/includes/bodystreamfield.html' %}
+                  {% endwith %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="sections">
+          {% for section in page.sections.all %}
+              <div>
+                  <section class="content">
+                      <h3>{{ section.title }}</h3>
+                      {{ section.content|safe }}
+                  </section>
+                  <aside class="meta no-content-heading">
+                      {{ section.image }}
+                  </aside>
+              </div>
+          {% endfor %}
+        </div>
+        <div class="images">
+          {% for image in page.images.all %}
+              <div>
+                  <aside class="meta no-content-heading">
+                      {% image image.full_size original %}
+                  </aside>
+                  <section class="content">
+                      {{ image.caption }}
+                  </section>
+              </div>
+          {% endfor %}
+        </div>
+      </article>
+    </div>
+  </div>
+</article>
+{% endblock %}
