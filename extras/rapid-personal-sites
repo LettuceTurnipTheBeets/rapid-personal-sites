@@ -1,13 +1,8 @@
 # located /var/nginx/sites-available/rapid-personal-sites
-server {
-    server_name "~^(?!www\.).*" ;
-    return 301 $scheme://www.$host$request_uri;
-}
 
 server {
     listen 80;
-    server_name 72.14.182.183;    
-    #server_name _;
+    server_name collabcake.com www.collabcake.com;    
 
     access_log /var/log/nginx/rapid-personal-sites/access.log;
     error_log /var/log/nginx/rapid-personal-sites/error.log;
