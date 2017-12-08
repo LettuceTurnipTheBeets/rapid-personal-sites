@@ -107,12 +107,44 @@ DATABASES = {
     'default': MYSQL_DATABASE
 }
 
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '\n%(asctime)-.19s [%(levelname)s] module=%(module)s process=%(process)d thread=%(thread)d\n%(message)s'
+        },
+        'simple': {
+            'format': '\n%(asctime)-.19s [%(levelname)s]\n%(message)s'
+        },
+    },
+    'handlers': {
+        'logfile': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/home/corbe054/rapid-personal-sites/django-error-logs/error.log',
+            'formatter': 'verbose',
+            'maxBytes': 1024*1024*2, # 2 MB
+            'backupCount': 10,
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['logfile'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -142,7 +174,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "personal"
+WAGTAIL_SITE_NAME = "Make a website?  Piece of cake."
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash

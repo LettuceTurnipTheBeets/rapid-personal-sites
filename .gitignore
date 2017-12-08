@@ -2,3 +2,4 @@
 settings_secret.py
 __pycache__/
 /static/
+django-error-logs/
