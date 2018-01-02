@@ -1,0 +1,11 @@
+uwsgi:
+    socket: /uwsgi-sockets/rapid-personal-sites.sock
+    master: true
+    processes: 4
+    threads: 2
+    single-interpreter: true
+    chdir: /home/corbe054/rapid-personal-sites/
+    wsgi-file: /home/corbe054/rapid-personal-sites/personal/wsgi.py
+    virtualenv: /var/env/personal
+    buffer-size: 8192
+    plugin: python35

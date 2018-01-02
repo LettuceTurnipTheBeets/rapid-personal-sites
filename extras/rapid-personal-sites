@@ -1,15 +1,15 @@
-# located /var/nginx/sites-available/rapid-personal-sites
+# located /etc/nginx/sites-available/rapid-personal-sites
 server {
     server_name "~^(?!www\.).*" ;
-    return 301 $scheme://www.$host$request_uri;
+    return 301 http://www.$host$request_uri;
 }
 
 server {
     listen 80;
     server_name collabcake.com www.collabcake.com;    
 
-    access_log /var/log/nginx/rapid-personal-sites/access.log;
-    error_log /var/log/nginx/rapid-personal-sites/error.log;
+    access_log /var/log/rapid-personal-sites/nginx_access.log;
+    error_log /var/log/rapid-personal-sites/nginx_error.log;
 
     location = /favicon.ico {
         access_log off;
@@ -22,6 +22,6 @@ server {
 
     location / {
         include         uwsgi_params;
-        uwsgi_pass      unix:/run/uwsgi/rapid-personal-sites.sock;
+        uwsgi_pass      unix:/uwsgi-sockets/rapid-personal-sites.sock;
     }    
 }
