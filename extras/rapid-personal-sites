@@ -1,12 +1,20 @@
 # located /etc/nginx/sites-available/rapid-personal-sites
-server {
-    server_name "~^(?!www\.).*" ;
-    return 301 http://www.$host$request_uri;
-}
+#server {
+#    listen 80;
+#
+#    #server_name "~^www\.(.*)$";
+#    #server_name "~^(?!www\.).*";
+#    server_name www.martycorbett.com    
+#
+#    #return 301 http://$1$request_uri;
+#    return 301 http://www.martycorbett.com$request_uri;
+#}
 
 server {
+    #listen 80 default_server;
     listen 80;
-    server_name collabcake.com www.collabcake.com;    
+
+    server_name www.collabcake.com;
 
     access_log /var/log/rapid-personal-sites/nginx_access.log;
     error_log /var/log/rapid-personal-sites/nginx_error.log;
@@ -15,7 +23,7 @@ server {
         access_log off;
         log_not_found off;
     }
-    
+
     location /static/ {
         root /home/corbe054/rapid-personal-sites/personal;
     }
@@ -23,5 +31,6 @@ server {
     location / {
         include         uwsgi_params;
         uwsgi_pass      unix:/uwsgi-sockets/rapid-personal-sites.sock;
-    }    
+    }
 }
+
