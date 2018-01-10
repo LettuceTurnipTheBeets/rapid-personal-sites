@@ -3,9 +3,18 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name "~^www\.(.*)$";
+    #server_name "~^(?!www\.).*" ;
+    #return 301 $scheme://www.$host$request_uri;
+    #server_name   ~^(www\.)?(?<domain>.+)$;
+    #return 301 $scheme://www.$domain$request_uri;
 
+
+    server_name "~^www\.(.*)$";
     return 301 $scheme://$1$request_uri; 
+    #server_name "~^(?!www\.).*" ;
+    #return 301 $scheme://www.$1$request_uri;
+    #server_name "~^(www\.)?(?<domain>.+)$";
+    #return 301 $scheme://www.$domain$request_uri;
 }
 
 server {
@@ -14,8 +23,9 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
+    #server_name www.collabcake.com www.martycorbett.com;
     server_name _;
-
+ 
     access_log /var/log/rapid-personal-sites/nginx_access.log;
     error_log /var/log/rapid-personal-sites/nginx_error.log;
 
