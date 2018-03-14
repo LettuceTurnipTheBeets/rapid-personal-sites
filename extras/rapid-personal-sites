@@ -7,6 +7,7 @@ server {
 }
 
 server {
+    listen 80;
     server_name www.collabcake.com;
  
     access_log /var/log/rapid-personal-sites/nginx_access.log;
@@ -28,8 +29,6 @@ server {
         uwsgi_pass      unix:/uwsgi-sockets/rapid-personal-sites.sock;
     }    
 
-    rewrite ^/?$ /admin/ permanent;
-
     listen 443 ssl; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/www.collabcake.com/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/www.collabcake.com/privkey.pem; # managed by Certbot
@@ -38,4 +37,6 @@ server {
     if ($scheme != "https") {
         return 301 https://$host$request_uri;
     } # managed by Certbot
+
+    rewrite ^/?$ /admin/ permanent; 
 }
