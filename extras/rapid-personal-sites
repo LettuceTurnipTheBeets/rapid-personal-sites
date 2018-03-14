@@ -1,33 +1,19 @@
-# located /etc/nginx/sites-available/rapid-personal-sites
+# located /etc/nginx/sites-available/rapid-personal-siites
 server {
     listen 80;
-    listen [::]:80;
-
-    #server_name "~^(?!www\.).*" ;
-    #return 301 $scheme://www.$host$request_uri;
-    #server_name   ~^(www\.)?(?<domain>.+)$;
-    #return 301 $scheme://www.$domain$request_uri;
-
-
-    server_name "~^www\.(.*)$";
-    return 301 $scheme://$1$request_uri; 
-    #server_name "~^(?!www\.).*" ;
-    #return 301 $scheme://www.$1$request_uri;
-    #server_name "~^(www\.)?(?<domain>.+)$";
-    #return 301 $scheme://www.$domain$request_uri;
+    server_name collabcake.com;
+    
+    return 301 http://www.collabcake.com$request_uri;
 }
 
 server {
-    #listen 80;
-    #server_name collabcake.com www.collabcake.com;    
     listen 80 default_server;
-    listen [::]:80 default_server;
-    
-    #server_name www.collabcake.com www.martycorbett.com;
-    server_name _;
+    server_name www.collabcake.com;
  
     access_log /var/log/rapid-personal-sites/nginx_access.log;
     error_log /var/log/rapid-personal-sites/nginx_error.log;
+
+    root /home/corbe054/rapid-personal-sites/;
 
     location = /favicon.ico {
         access_log off;
@@ -42,4 +28,6 @@ server {
         include         uwsgi_params;
         uwsgi_pass      unix:/uwsgi-sockets/rapid-personal-sites.sock;
     }    
+
+    rewrite ^/?$ /admin/ permanent;
 }
