@@ -5,10 +5,10 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtaildocs.blocks
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.documents.blocks
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
                 ('title', models.CharField(help_text='The section title.', max_length=255)),
-                ('content', wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='The section content.', null=True)),
+                ('content', wagtail.core.fields.RichTextField(blank=True, help_text='The section content.', null=True)),
                 ('image', models.ForeignKey(blank=True, help_text='The section image.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
             options={
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('template_path', models.CharField(blank=True, help_text='A path to the template to use to render the page.', max_length=255, null=True)),
-                ('body', wagtail.wagtailcore.fields.StreamField((('heading', wagtail.wagtailcore.blocks.CharBlock(classname='heading', icon='title')), ('subheading', wagtail.wagtailcore.blocks.CharBlock(classname='subheading', icon='title')), ('paragraph', wagtail.wagtailcore.blocks.RichTextBlock(classname='paragraph', icon='pilcrow')), ('image', wagtail.wagtailimages.blocks.ImageChooserBlock(icon='image')), ('document', wagtail.wagtaildocs.blocks.DocumentChooserBlock(icon='doc-full-inverse'))), blank=True, help_text='The primary content for the page.', null=True)),
+                ('body', wagtail.core.fields.StreamField((('heading', wagtail.core.blocks.CharBlock(classname='heading', icon='title')), ('subheading', wagtail.core.blocks.CharBlock(classname='subheading', icon='title')), ('paragraph', wagtail.core.blocks.RichTextBlock(classname='paragraph', icon='pilcrow')), ('image', wagtail.images.blocks.ImageChooserBlock(icon='image')), ('document', wagtail.documents.blocks.DocumentChooserBlock(icon='doc-full-inverse'))), blank=True, help_text='The primary content for the page.', null=True)),
             ],
             options={
                 'abstract': False,

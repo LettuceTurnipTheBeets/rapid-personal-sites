@@ -5,17 +5,17 @@ from django.db import models
 from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import StreamField, RichTextField
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailadmin.edit_handlers import InlinePanel, FieldPanel, \
+from wagtail.core.models import Page, Orderable
+from wagtail.core.fields import StreamField, RichTextField
+from wagtail.core import blocks
+from wagtail.admin.edit_handlers import InlinePanel, FieldPanel, \
     StreamFieldPanel, MultiFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailcore.blocks import TextBlock, StructBlock, RichTextBlock, \
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.core.blocks import TextBlock, StructBlock, RichTextBlock, \
     StreamBlock, CharBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
-from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
 from .helpers import generate_image_url
 
