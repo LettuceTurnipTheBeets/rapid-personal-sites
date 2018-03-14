@@ -4,3 +4,12 @@ __pycache__/
 /static/
 django-error-logs/
 /media/
+
+personal/static/wagtailadmin
+personal/static/wagtaildocs
+personal/static/wagtailembeds
+personal/static/wagtailimages
+personal/static/wagtailmenus
+personal/static/wagtailmodeladmin
+personal/static/wagtailsnippets
+personal/static/wagtailusers
