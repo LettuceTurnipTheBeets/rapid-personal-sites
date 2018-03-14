@@ -3,11 +3,10 @@ server {
     listen 80;
     server_name collabcake.com;
     
-    return 301 http://www.collabcake.com$request_uri;
+    return 301 https://www.collabcake.com$request_uri;
 }
 
 server {
-    listen 80 default_server;
     server_name www.collabcake.com;
  
     access_log /var/log/rapid-personal-sites/nginx_access.log;
@@ -30,4 +29,13 @@ server {
     }    
 
     rewrite ^/?$ /admin/ permanent;
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/www.collabcake.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/www.collabcake.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
 }
