@@ -10,3 +10,8 @@ This site is developed primarily in JQuery and Bootstrap for the front-end and P
 
 This allows for rapid development of personal websites but scales to suit individuals of any skill level.  The ideal individual has some background in programming but it works for beginner, intermediate, and advanced skillsets.
 
+## Requirements
+
+Django 2.0.3  
+mysqlclient  1.3.12  
+wagtail 2.0  

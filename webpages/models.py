@@ -1,9 +1,7 @@
 import os
 import re
-
 from django.db import models
 from django.shortcuts import render
-
 from modelcluster.fields import ParentalKey
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import StreamField, RichTextField
@@ -16,11 +14,11 @@ from wagtail.core.blocks import TextBlock, StructBlock, RichTextBlock, \
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-
 from .helpers import generate_image_url
 
 
 class BodyStreamBlock(StreamBlock):
+    """A fluid way to add the below into page body"""
     heading = CharBlock(icon="title", classname="heading")
     subheading = CharBlock(icon="title", classname="subheading")
     paragraph = RichTextBlock(icon="pilcrow", classname="paragraph")
@@ -70,6 +68,7 @@ class WebPage(Page):
     ]
 
     def get_template(self, request):
+        """Return the correct template based on the site being accessed"""
         if self.template_path:
             template = self.template_path
         else:
@@ -87,6 +86,7 @@ class WebPage(Page):
 
 
 class Section(Orderable):
+    """Section class within the page body"""
     page = ParentalKey(WebPage, related_name='sections')
     title = models.CharField(
         max_length=255,
@@ -113,6 +113,7 @@ class Section(Orderable):
 
 
 class Images(Orderable):
+    """Image class"""
     page = ParentalKey(WebPage, related_name='images')
     thumbnail = models.ForeignKey(
         'wagtailimages.Image',
