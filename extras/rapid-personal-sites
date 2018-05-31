@@ -37,6 +37,4 @@ server {
     if ($scheme != "https") {
         return 301 https://$host$request_uri;
     } # managed by Certbot
-
-    rewrite ^/?$ /admin/ permanent; 
 }

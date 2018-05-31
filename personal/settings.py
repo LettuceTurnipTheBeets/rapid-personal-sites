@@ -24,7 +24,7 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = SECRET
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = HOSTS
 
@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     # Websites
     'websites.collabcake_com',
     'websites.martycorbett_com',
+
+    # dashboard
+    'dashboard',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -173,7 +176,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "Make a website?  Piece of cake."
+WAGTAIL_SITE_NAME = "backend.  Make a website?  Piece of cake."
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
