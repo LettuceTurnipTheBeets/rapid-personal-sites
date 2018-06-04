@@ -14,8 +14,8 @@ This allows for rapid development of personal websites but scales to suit indivi
 
 ## Workflow
 
-1. Models are created for certain functions (documents, columns, calendars, portals, etc) that are handled the same way across websites
-2. Templates are created which are similar but may have a slightly different look across websites
+1. Models are created for certain functions (documents, columns, calendars, portals, etc) that are handled the same way across websites.
+2. Templates are created which are similar but may have a slightly different look across websites.
 3. Custom CSS is created for each website to specialize the look and feel.  But, again, this is similar across websites.
 4. People with no development experience can access the back-end to drag and drop webpage elements and design their site their way.  They can easily edit/create content and layouts based on the templates and models that were developed earlier.
 5. Multiple sites can be developed with much code reusability.
